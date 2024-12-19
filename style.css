@@ -146,7 +146,16 @@ section {
     white-space: nowrap;
     overflow: hidden;
     color: white;
+}
+
+#typing-text-cornflower {
+    font-size: 2.5rem;
+    font-family: 'Exo 2', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    color: cornflowerblue;
     text-decoration: underline;
+    margin-top: -480px;
 }
 
 
