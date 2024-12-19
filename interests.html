@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!--Create top ribbin-->
+    <header id="top-ribbon" class="top-ribbon">
+        <nav class="nav-bar">
+             <ul class="nav">
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="projects.html">Projects</a></li>
+                 <li><a href="interests.html">Interests</a></li>
+                 <li>
+                     <a href="https://www.linkedin.com/in/wcusato" target="_blank">
+                         <i class="fab fa-linkedin social-logo"></i>
+                     </a>
+                 </li>
+                 <li><a href="William Cusato Resume For Online.pdf" target="_blank">Resume</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+             </ul>
+         </nav>
+     </header>
+
+     <section id="about">
+        <div class="about-container">
+            <h1>Interests</h1>
+        </div>
+    </section>
+
+    <div class="interest">
+        <div class="left-side">
+            <img src="images/wmfo.jpg" alt="Left Side Image" />
+        </div>
+        <div class="right-side">
+            <h1>Listening to Music!</h1>
+            <div class="slidingElement">
+                <p>
+                    I know this doesn't sound like much of an interest, but hear me out.
+                    <br>
+                    I'm a frequent member of online music communities like <a href="https://rateyourmusic.com/">Rate Your Music</a>, where I review newely released albums, 
+                    or classics that I haven't gotten around to yet. Online forums are also where
+                    I find my next listen!
+                    <br>
+                    I also hold a weekly radio show on 91.5 FM, WMFO, Tufts Freeform Radio, with my good friend. We take deep dives
+                    into overlooked emotions, and play music that we think reflects the feeling associated with that emotion.
+                    Listen in to <a href="https://www.wmfo.org/">'Affective Meltdown'</a> every Wednesday at 6 AM!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="interest">
+        <div class="left-side">
+            <img src="images/willRunning.png" alt="Left Side Image" />
+        </div>
+        <div class="right-side">
+            <h1>Running!</h1>
+            <div class="slidingElement">
+                <p>
+                    A passion for running 'runs' in the family, as my father competed collegietely in track and field,
+                    and my mother is a multi-time marathoner, and still runs marathons to this day! Beyond this, both 
+                    of my brohters ran in high-school. This influenced me to start running competetively before I reached
+                    middle school, and I haven't looked back since! 
+                    <br>
+                    Currently, I compete for <a href="https://gotuftsjumbos.com/sports/mens-cross-country">Tufts University's varsity cross country and track and field teams</a>. My
+                    experiences competing for a collegiete team have provided me with memories that I will never 
+                    forget, and teammates, that I will hold dear to me for the rest of my life.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="interest">
+        <div class="left-side">
+            <img src="images/mount.jpg" alt="Left Side Image" />
+        </div>
+        <div class="right-side">
+            <h1>The Outdoors!</h1>
+            <div class="slidingElement">
+                <p> 
+                    I'm very fortunate that two interests of mine compliment eachother, as my love of running allows me to explore the great outdoors!
+                    <br>
+                    As I grow older, I find that my appreciation of everything outside my bedroom grows, and I get to share this 
+                    sentiment with my friends through the trips we take together! This past summer we spent a week in Acadia National Park,
+                    and it was the trip of a lifetime! I'll never forget the view at the top of Cadalliac Mountain.
+                    <br>
+                    I also enjoy visiting my cousins in the Coloradian Rockies, and getting to explore all that the low-elevation dwellers (like myself) am barred from!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <!--Maybe Delete still trying to implement-->
+    <script> document.addEventListener('DOMContentLoaded', () => { 
+        const slidingElements = document.querySelectorAll('.slidingElement'); 
+        const observer = new IntersectionObserver(entries => { 
+            entries.forEach(entry => { if (entry.isIntersecting) { 
+                entry.target.style.left = '0px'; 
+            } }); 
+        }); 
+
+        slidingElements.forEach(el => observer.observe(el)); });
+    </script>
+
+
+    <!--Script for the top ribbon appearing--> 
+    <script>
+        const topRibbon = document.getElementById("top-ribbon");
+
+        // Make sure ribbon shows up initially
+        window.addEventListener("load", () => {
+            topRibbon.style.top = "0"; 
+        });
+
+        // Listen for the scrolling
+        window.addEventListener("scroll", () => {
+            if (window.scrollY <= 10) {
+                topRibbon.style.top = "0"; 
+            } else {
+                topRibbon.style.top = "-80px"; 
+            }
+        });
+    </script>
+</body>
+</html>

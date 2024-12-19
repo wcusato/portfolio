@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Create top ribbin-->
+    <header id="top-ribbon" class="top-ribbon">
+        <nav class="nav-bar">
+             <ul class="nav">
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="projects.html">Projects</a></li>
+                 <li><a href="interests.html">Interests</a></li>
+                 <li>
+                     <a href="https://www.linkedin.com/in/wcusato" target="_blank">
+                         <i class="fab fa-linkedin social-logo"></i>
+                     </a>
+                 </li>
+                 <li><a href="William Cusato Resume For Online.pdf" target="_blank">Resume</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+             </ul>
+         </nav>
+     </header>
+
+     <section id="about">
+        <div class="about-container">
+            <h1>Projects</h1>
+        </div>
+    </section>
+
+     <section class="projects-section">
+        <div class="project">
+            <div class="project-title">Hot Rod!!! (Major Project)</div>
+            <a href="hotRod.html" >
+                <img src="images/hotRod Front pic.png" alt="Project 1">
+            </a>
+        </div>
+        <div class="project">
+            <div class="project-title">H-Bridge PCB</div>
+            <a href="hBridge.html">
+                <img src="images/ki-cad render.png" alt="Project 4">
+            </a>
+        </div>
+        <div class="project">
+            <div class="project-title">Product Decomposition</div>
+            <a href="decomp.html">
+                <img src="images/lowQual.gif" alt="Project 2">
+            </a>
+        </div>
+        <div class="project">
+            <div class="project-title">Academic Papers</div>
+            <a href="papers.html">
+                <img src="images/latex.png" alt="Project 2">
+            </a>
+        </div>
+        <div class="project">
+            <div class="project-title">This Website (Source Code)</div>
+            <a href="https://github.com/wcusato/portfolio" target="_blank">
+                <img src="images/guyCoding2.jpg" alt="Project 1">
+            </a>
+        </div>
+    </section>
+
+
+    <!--Script for the top ribbon appearing--> 
+    <script>
+        const topRibbon = document.getElementById("top-ribbon");
+
+        // Make sure ribbon shows up initially
+        window.addEventListener("load", () => {
+            topRibbon.style.top = "0"; 
+        });
+
+        // Listen for the scrolling
+        window.addEventListener("scroll", () => {
+            if (window.scrollY <= 10) {
+                topRibbon.style.top = "0"; 
+            } else {
+                topRibbon.style.top = "-80px"; 
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Rod</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Create top ribbon -->
+    <header id="top-ribbon" class="top-ribbon">
+        <nav class="nav-bar">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/wcusato" target="_blank">
+                        <i class="fab fa-linkedin social-logo"></i>
+                    </a>
+                </li>
+                <li><a href="William Cusato Resume For Online.pdf" target="_blank">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="projTitleText">Hot Rod (Pi Controlled Car)</div>
+
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <img src="images/hotRod1.png" alt="Hot Rod Image" />
+        </div>
+        <div class="right-side-proj">
+            <p>"Hot Rod" comes from two projects. The two separate projects 
+                have similar end goals with different means of achieving them.
+                The requirements for the first project are listed below:
+            </p>
+            <ul>
+                <li>The robot must be able to ascend a ramp</li>
+                <li>The robot must not fall off the ramp</li>
+                <li>The robot must be controlled wirelessly through the internet</li>
+                <li>The robot cannot be touched during its ascent</li>
+            </ul>
+        </div>
+    </div>
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <img src="images/hotRodWheels.png" alt="Hot Rod Wheels" />
+        </div>
+        <div class="right-side-proj">
+            <p>I worked on Hot Rod with one other student. Our plan was to use
+                two 12V DC motors to provide front-wheel drive. There would be a third wheel in the 
+                back to stabilize the car. <br><br>
+                We also decided to make the robot in the shape of a box to simplify
+                the process of storing and mounting electronic components.
+            </p>
+        </div>
+    </div>
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <p>Before we started construction, I created an assembly of the robot in SolidWorks to make 
+                sure all components interface correctly and effortlessly. <br><br>
+                The creation of the assembly also served a second purpose, as we laser cut the frame for the robot.
+                Thus, it was simple to export all necessary components as DXF files for laser cutting.
+            </p>
+        </div>
+        <div class="right-side-proj">
+            <img src="images/hotRodSolidworks.png" alt="Hot Rod SolidWorks" />
+        </div>
+    </div>
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <img src="images/hotRodWeb.png" alt="Hot Rod Web" />
+        </div>
+        <div class="right-side-proj">
+            <p>Internet connection was provided with the help of a Raspberry Pi.
+                We used Python and an HTML website to allow a user to input directions for the robot to follow.
+                <br><br>
+                The controls were rudimentary but served us well in the completion of the project. <br><br>
+                Our control website can be seen to the left.
+            </p>
+        </div>
+    </div>
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <p>
+                Finally, we were able to put Hot Rod to the test (for the requirements listed for the first project). 
+                My partner controlled the robot as my professor added commentary.
+                <br><br> The final product can be seen to the right!
+            </p>
+        </div>
+        <div class="right-side-proj">
+            <video controls width="640" height="360">
+                <source src="videos/hireThisGuy.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <p>
+                The second project involving Hot Rod had slightly different requirements than the first. The new requirements can be seen below:
+            </p>
+            <ul>
+                <li>The robot must communicate with another robot</li>
+                <li>The robot, in conjunction with another robot, must push a cylinder up the ramp</li>
+                <li>The robot can only receive a start command; everything else is autonomous</li>
+                <li>The robot must be able to work with any other robot</li>
+            </ul>
+        </div>
+        <div class="right-side-proj">
+            <img src="images/guardrails.png" alt="Guardrails" />
+        </div>
+    </div>
+    <div class="fullText">
+        As can be seen in the photo above, the major hardware modification that we made was the addition of
+        guardrails. We viewed this as the easiest way to make sure that the robot stays straight, as we couldn’t rely upon the motors
+        to provide equal speed at all times. Attached to the guardrails are two buttons. These buttons communicate to the robot
+        whether it should speed up or slow down. For example, if the robot is on the left ramp, and only the left button is pushed,
+        it must be falling behind the other robot, so it should speed up.
+    </div>
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <img src="images/hotRod1.png" alt="Hot Rod" />
+        </div>
+        <div class="right-side-proj">
+            <p>On top of this, our robot could send requests to the other robot to speed up or slow down based on the information
+                provided from the buttons. Communication was vital when starting the ascent up the ramp, as both robots had to
+                start at the same speed and at the same time. These initial agreements between robots were implemented in code with no communication 
+                between humans (i.e., the robots were coded to find a mutually agreeable speed and start time).
+            </p>
+        </div>
+    </div>
+    <div class="indvProject">
+        <div class="left-side-proj">
+            <video controls width="640" height="360">
+                <source src="videos/longProj6.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class = "right-side-proj">
+            <video controls width="640" height="360">
+                <source src="videos/shortProj6.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <script>
+        const topRibbon = document.getElementById("top-ribbon");
+
+        // Make sure ribbon shows up initially
+        window.addEventListener("load", () => {
+            topRibbon.style.top = "0"; 
+        });
+
+        // Listen for the scrolling
+        window.addEventListener("scroll", () => {
+            if (window.scrollY <= 10) {
+                topRibbon.style.top = "0"; 
+            } else {
+                topRibbon.style.top = "-80px"; 
+            }
+        });
+    </script>
+
+    <script> 
+        document.addEventListener('DOMContentLoaded', () => { 
+            const textElement = document.querySelector('.projTitleText'); 
+            const observer = new IntersectionObserver(entries => { 
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) { 
+                        entry.target.classList.add('animated'); 
+                    } 
+                }); 
+            }); 
+            
+            observer.observe(textElement); });
+    </script>
+
+</body>
+</html>

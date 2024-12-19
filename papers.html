@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Papers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Create top ribbin-->
+    <header id="top-ribbon" class="top-ribbon">
+        <nav class="nav-bar">
+             <ul class="nav">
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="projects.html">Projects</a></li>
+                 <li><a href="interests.html">Interests</a></li>
+                 <li>
+                     <a href="https://www.linkedin.com/in/wcusato" target="_blank">
+                         <i class="fab fa-linkedin social-logo"></i>
+                     </a>
+                 </li>
+                 <li><a href="William Cusato Resume For Online.pdf" target="_blank">Resume</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+             </ul>
+         </nav>
+     </header>
+
+    <div class="projTitleText">Miscellaneous Reports</div>
+
+    <div class="indvProject">
+        <div class ="left-side-proj">
+            <img src="images/springggggy.png" alt />
+        </div>
+        <div class = "right-side">
+            <h1>Analysis of Failure Criteria</h1>
+            <a href="ME41___Project_1_Report-2.pdf" target="_blank">Analysis of Static Failure Criteria on C-Shaped Spring</a>
+            <p></p>
+            <a href="ME41___Project_2_Report-2.pdf" target="_blank">Analysis of Dynamic Failure Criteria on CR Clarke Injection Molder</a>
+        </div>
+    </div>
+    <div class="indvProject">
+        <div class ="left-side-proj">
+            <img src="images/fluidsssss.png" alt />
+        </div>
+        <div class = "right-side">
+            <h1>Thermal Fluid Systems</h1>
+            <a href="Lab4 - Will, Will - Report-2.pdf" target="_blank">Analysis on the Effect of Vortex Generators on Heat Exchanger Performance</a>
+        </div>
+    </div>
+
+
+
+    <script>
+        const topRibbon = document.getElementById("top-ribbon");
+
+        // Make sure ribbon shows up initially
+        window.addEventListener("load", () => {
+            topRibbon.style.top = "0"; 
+        });
+
+        // Listen for the scrolling
+        window.addEventListener("scroll", () => {
+            if (window.scrollY <= 10) {
+                topRibbon.style.top = "0"; 
+            } else {
+                topRibbon.style.top = "-80px"; 
+            }
+        });
+    </script>
+
+    <script> 
+        document.addEventListener('DOMContentLoaded', () => { 
+            const textElement = document.querySelector('.projTitleText'); 
+            const observer = new IntersectionObserver(entries => { 
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) { 
+                        entry.target.classList.add('animated'); 
+                    } 
+                }); 
+            }); 
+            
+            observer.observe(textElement); });
+    </script>
+
+</body>
+</html>

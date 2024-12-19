@@ -1,62 +1,91 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
+    <!--Create top ribbin-->
+    <header id="top-ribbon" class="top-ribbon">
+        <nav class="nav-bar">
+             <ul class="nav">
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="projects.html">Projects</a></li>
+                 <li><a href="interests.html">Interests</a></li>
+                 <li>
+                     <a href="https://www.linkedin.com/in/wcusato" target="_blank">
+                         <i class="fab fa-linkedin social-logo"></i>
+                     </a>
+                 </li>
+                 <li><a href="William Cusato Resume For Online.pdf" target="_blank">Resume</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+             </ul>
+         </nav>
+     </header>
+
     <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I'm [Your Name], a passionate [Your Role, e.g., Web Developer].</p>
-    </section>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        <div>
-            <h3>Project 1</h3>
-            <p>A brief description of your project.</p>
-            <a href="#" target="_blank">View Project</a>
-        </div>
-        <div>
-            <h3>Project 2</h3>
-            <p>A brief description of your project.</p>
-            <a href="#" target="_blank">View Project</a>
+        <div class="about-container">
+            <h1>William Cusato</h1>
         </div>
     </section>
     
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>[Your Other Skills]</li>
-        </ul>
-    </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:yourname@example.com">yourname@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></p>
-    </section>
-    
-    <footer>
-        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
-    </footer>
+
+    <div class="aboutMe">
+        <div class="left-side">
+            <img src="images/sunflowers.jpg" alt="Left Side Image" />
+        </div>
+        <div class="right-side">
+            <h1>Welcome to My Portfolio!</h1>
+            <h2 id="typing-text"></h2>
+        </div>
+    </div>
+
+
+    <!--Script for the top ribbon appearing--> 
+    <script>
+        const topRibbon = document.getElementById("top-ribbon");
+
+        // Make sure ribbon shows up initially
+        window.addEventListener("load", () => {
+            topRibbon.style.top = "0"; 
+        });
+
+        // Listen for the scrolling
+        window.addEventListener("scroll", () => {
+            if (window.scrollY <= 10) {
+                topRibbon.style.top = "0"; 
+            } else {
+                topRibbon.style.top = "-80px"; 
+            }
+        });
+    </script>
+
+    <!--Code for typing text-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const text = "Hey!<br>My name is William Cusato, and I'm a junior mechanical<br>engineering student at Tufts University!<br><br>In my free time, I enjoy running, reviewing music, and<br>spending time outdoors. You can read more about that<br>on the interests tab!<br><br>I'm currently seeking an internship for the Summer of<br>2025.<br><br>I hope you enjoy my portfolio!";
+            const typingTextElement = document.getElementById("typing-text");
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    if (text.charAt(index) === "<") {
+                        typingTextElement.innerHTML += text.substring(index, text.indexOf(">", index) + 1);
+                        index = text.indexOf(">", index) + 1;
+                    } else {
+                        typingTextElement.innerHTML += text.charAt(index);
+                        index++;
+                    }
+                    setTimeout(type, 20);
+                }
+            }
+
+            type();
+        });
+    </script>
+
 </body>
 </html>
