@@ -37,8 +37,7 @@ section {
     width: 100%;
     height: 100%;
     background-image: url('images/adirondacks.jpg');
-    border: 2px solid white;
-    border-radius: 8px;
+    border-bottom: 2px solid white;
     background-size: cover;
     background-position: center;
     opacity: .6; 
