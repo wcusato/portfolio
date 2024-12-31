@@ -70,13 +70,13 @@ section {
 .contact {
     margin: 100px;
     color: white;
-    font-size: 5rem;
+    font-size: 1.6rem;
     font-family: 'Exo 2', sans-serif;
 }
 
 .contact-h1 {
     color: white;
-    font-size: 5rem;
+    font-size: 1.6rem;
     font-family: 'Exo 2', sans-serif;
 }
 
@@ -107,7 +107,9 @@ section {
 @media (max-width: 768px) {
     #typing-text-cornflower {
         margin-top: -18.35rem;
+        overflow: auto;
     }
+
 }
 
 
@@ -181,7 +183,7 @@ section {
     }
 
     .contact, .contact-h1 {
-        font-size: 3rem;
+        font-size: 1.6rem;
     }
 
     #typing-text-contact, #typing-text-cornflower {
@@ -233,7 +235,9 @@ i.fab:hover {
     font-size: 1.6rem;
 }
 
-.right-side::after { 
+.right-side::after, 
+.left-side::after
+.contact::after { 
     content: ''; 
     display: block; 
     width: 0; 
@@ -275,7 +279,7 @@ i.fab:hover {
         flex-direction: row;
     }
 
-    .left-side img {
+    .left-side img, .right-side img {
         width: 90%; 
         height: 90%;
     }
@@ -307,7 +311,7 @@ i.fab:hover {
 .left-side, .right-side {
     flex: 1; 
     padding-right: 50px; 
-    padding-left: 10px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -344,12 +348,21 @@ i.fab:hover {
     border-radius: 10px;
 }
 
+.right-side img {
+    object-fit: cover; 
+    margin-top: 3.5rem;
+    z-index: 2;
+    width: 100%; 
+    height: auto;
+    border-radius: 10px;
+}
+
 @media (min-width: 769px) {
     .interest {
         flex-direction: row;
     }
 
-    .left-side img {
+    .left-side img, .right-side img {
         width: 90%; 
         height: 100%;
     }
@@ -541,6 +554,7 @@ i.fab:hover {
 
     .projTitleText {
         font-size: 2rem;
+        white-space: wrap; 
     }
 
     .fullText {
@@ -550,9 +564,11 @@ i.fab:hover {
 
     #typing-text {
         font-size: 1.1rem;
+        overflow: auto;
     }
 
     .right-side h1{
         font-size: 2.5rem;
     }
+
 }

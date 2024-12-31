@@ -27,9 +27,26 @@
          </nav>
      </header>
 
-    <div class="contact">
-        <h1 id="typing-text-contact"></h1>
-        <h1 id="typing-text-cornflower"></h1>
+    <div class="aboutMe">
+        <div class="left-side">
+            <p>
+                Hope you enjoyed my portfolio!<br>
+                Please consider leaving a message.<br><p></p>
+                Address:
+                <div class="text-container" id="typing-text">
+                    <div class="text-line">43 Teele Avenue, Somerville, MA, 02144</div>
+                </div>
+                <br><br><p></p>
+                Email:
+                <div class="text-container" id="typing-text">
+                    <div class="text-line">william.cusato@tufts.edu</div><br>
+                    <div class="text-line">williamcusato@gmail.com</div>
+                </div>
+            </p>
+        </div>
+        <div class="right-side">
+            <img src="images/nyc.jpg" alt="Left Side Image" />
+        </div>
     </div>
 
     
@@ -51,52 +68,19 @@
                 topRibbon.style.top = "-80px"; 
             }
         });
-    </script>
 
-        <!--Code for typing text-->
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const text = "Hope you enjoyed my portfolio!<br>Please consider leaving a message.<br><br>Address:<br><br><br>Email:";
-                const typingTextElement = document.getElementById("typing-text-contact");
-
-                const text2 = "<br><br><br><br>43 Teele Avenue, Somerville, MA, 02144<br><br><br>william.cusato@tufts.edu<br>williamcusato@gmail.com";
-                const typingTextElement2 = document.getElementById("typing-text-cornflower");
-
-                let index = 0;
-                let index2 = 0;
-
-                function type() {
-                    if (index < text.length) {
-                        if (text.charAt(index) === "<") {
-                            typingTextElement.innerHTML += text.substring(index, text.indexOf(">", index) + 1);
-                            index = text.indexOf(">", index) + 1;
-                        } else {
-                            typingTextElement.innerHTML += text.charAt(index);
-                            index++;
-                        }
-                        setTimeout(type, 13);
-                    } else {
-                        type2();
+        document.addEventListener("DOMContentLoaded", () => {
+            const textElements = document.querySelectorAll('.text-line');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
                     }
-                }
-
-                function type2() {
-                    if (index2 < text2.length) {
-                        if (text2.charAt(index2) === "<") {
-                            typingTextElement2.innerHTML += text2.substring(index2, text2.indexOf(">", index2) + 1);
-                            index2 = text2.indexOf(">", index2) + 1;
-                        } else {
-                            typingTextElement2.innerHTML += text2.charAt(index2);
-                            index2++;
-                        }
-                        setTimeout(type2, 13);
-                    }
-                }
-
-                type();
+                });
             });
 
-           
-        </script>
+            textElements.forEach(element => observer.observe(element));
+        });
+    </script>
 </body>
 </html>
