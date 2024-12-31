@@ -162,7 +162,7 @@ section {
     transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
     .nav-bar {
         flex-direction: column;
         text-align: center;
@@ -274,7 +274,7 @@ i.fab:hover {
     width: 100%; 
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1150px) {
     .aboutMe {
         flex-direction: row;
     }
@@ -357,7 +357,7 @@ i.fab:hover {
     border-radius: 10px;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1150px) {
     .interest {
         flex-direction: row;
     }
@@ -442,7 +442,7 @@ i.fab:hover {
 } 
 
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .indvProject {
         flex-direction: row;
         height: 50vh;
