@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,84 +10,89 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 <body>
-    <!--Create top ribbin-->
+    <!-- Create top ribbon -->
     <header id="top-ribbon" class="top-ribbon">
         <nav class="nav-bar">
-             <ul class="nav">
-                 <li><a href="index.html">Home</a></li>
-                 <li><a href="projects.html">Projects</a></li>
-                 <li><a href="interests.html">Interests</a></li>
-                 <li>
-                     <a href="https://www.linkedin.com/in/wcusato" target="_blank">
-                         <i class="fab fa-linkedin social-logo"></i>
-                     </a>
-                 </li>
-                 <li><a href="William Cusato Resume For Online.pdf" target="_blank">Resume</a></li>
-                 <li><a href="contact.html">Contact</a></li>
-             </ul>
-         </nav>
-     </header>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/wcusato" target="_blank">
+                        <i class="fab fa-linkedin social-logo"></i>
+                    </a>
+                </li>
+                <li><a href="William Cusato Resume For Online.pdf" target="_blank">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section id="about">
         <div class="about-container">
             <h1>William Cusato</h1>
         </div>
     </section>
-    
 
     <div class="aboutMe">
         <div class="left-side">
             <img src="images/sunflowers.jpg" alt="Left Side Image" />
         </div>
         <div class="right-side">
-            <h1>Welcome to My Portfolio!</h1>
-            <h2 id="typing-text"></h2>
+            <h1><div class="text-line">Welcome to my Portfolio!</div></h1>
+            <div class="text-container" id="typing-text">
+                <br>
+                <div class="text-line">Hey!</div>
+                <br><br>
+                <div class="text-line">My name is William Cusato, and I'm a junior mechanical</div>
+                <br>
+                <div class="text-line">engineering student at Tufts University!</div>
+                <br><br>
+                <div class="text-line">In my free time, I enjoy running, reviewing music, and</div>
+                <br>
+                <div class="text-line">spending time outdoors. You can read more about that </div>
+                <br>
+                <div class="text-line">on the interests tab!</div>
+                <br><br>
+                <div class="text-line">I'm currently seeking an internship for the Summer</div>
+                <br>
+                <div class="text-line">of 2025.</div>
+                <br><br>
+                <div class="text-line">I hope you enjoy my portfolio!</div>
+            </div>
         </div>
     </div>
 
-
-    <!--Script for the top ribbon appearing--> 
+    <!-- Script for the top ribbon appearing -->
     <script>
         const topRibbon = document.getElementById("top-ribbon");
 
         // Make sure ribbon shows up initially
         window.addEventListener("load", () => {
-            topRibbon.style.top = "0"; 
+            topRibbon.style.top = "0";
         });
 
         // Listen for the scrolling
         window.addEventListener("scroll", () => {
             if (window.scrollY <= 10) {
-                topRibbon.style.top = "0"; 
+                topRibbon.style.top = "0";
             } else {
-                topRibbon.style.top = "-80px"; 
+                topRibbon.style.top = "-80px";
             }
         });
-    </script>
 
-    <!--Code for typing text-->
-    <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const text = "Hey!<br>My name is William Cusato, and I'm a junior mechanical<br>engineering student at Tufts University!<br><br>In my free time, I enjoy running, reviewing music, and<br>spending time outdoors. You can read more about that<br>on the interests tab!<br><br>I'm currently seeking an internship for the Summer of<br>2025.<br><br>I hope you enjoy my portfolio!";
-            const typingTextElement = document.getElementById("typing-text");
-            let index = 0;
-
-            function type() {
-                if (index < text.length) {
-                    if (text.charAt(index) === "<") {
-                        typingTextElement.innerHTML += text.substring(index, text.indexOf(">", index) + 1);
-                        index = text.indexOf(">", index) + 1;
-                    } else {
-                        typingTextElement.innerHTML += text.charAt(index);
-                        index++;
+            const textElements = document.querySelectorAll('.text-line');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
                     }
-                    setTimeout(type, 20);
-                }
-            }
+                });
+            });
 
-            type();
+            textElements.forEach(element => observer.observe(element));
         });
     </script>
-
 </body>
 </html>
