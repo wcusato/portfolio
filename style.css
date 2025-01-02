@@ -442,7 +442,7 @@ i.fab:hover {
 } 
 
 
-@media (min-width: 1200px) {
+@media (min-width: 1250px) {
     .indvProject {
         flex-direction: row;
         height: 50vh;
