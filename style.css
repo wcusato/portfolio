@@ -597,3 +597,11 @@ span {
     font-size: 8rem;
     white-space: nowrap;
   }
+
+@media (max-width: 1200px) {
+    span {
+        font-size: 6rem; /* Reduce font size */
+        max-width: 80vw; /* Limit width */
+        white-space: normal;
+    }
+}
