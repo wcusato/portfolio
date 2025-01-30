@@ -609,7 +609,7 @@ span {
 
 @media (max-width: 800px) {
     span {
-        font-size: 4rem; /* Reduce font size */
+        font-size: 3rem; /* Reduce font size */
         max-width: 80vw; /* Limit width */
         white-space: normal;
     }
