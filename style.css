@@ -605,3 +605,12 @@ span {
         white-space: normal;
     }
 }
+
+
+@media (max-width: 800px) {
+    span {
+        font-size: 4rem; /* Reduce font size */
+        max-width: 80vw; /* Limit width */
+        white-space: normal;
+    }
+}
