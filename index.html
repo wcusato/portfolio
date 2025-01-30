@@ -9,6 +9,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
+    
+    span::before {
+      content: "WILLIAM CUSATO";
+      position: absolute;
+      color: transparent;
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent 0,
+        transparent 2px,
+        white 2px,
+        white 4px
+      );
+      -webkit-background-clip: text;
+      top: 0px;
+      left: 0;
+      z-index: -1;
+      transition: 1s;
+    }
+    
+    span::after {
+      content: "WILLIAM CUSATO";
+      position: absolute;
+      color: transparent;
+      background-image: repeating-linear-gradient(
+        135deg,
+        transparent 0,
+        transparent 2px,
+        white 2px,
+        white 4px
+      );
+      -webkit-background-clip: text;
+      top: 0px;
+      left: 0px;
+      transition: 1s;
+    }
+    
+    span:hover:before {
+      top: 10px;
+      left: 10px;
+    }
+    
+    span:hover:after {
+      top: -10px;
+      left: -10px;
+    } 
+    </style>
 <body>
     <!-- Create top ribbon -->
     <header id="top-ribbon" class="top-ribbon">
@@ -30,9 +78,13 @@
 
     <section id="about">
         <div class="about-container">
-            <h1>William Cusato</h1>
+            <h1>
+                <span>WILLIAM CUSATO</span>
+                
+              </h1>
         </div>
     </section>
+
 
     <div class="aboutMe">
         <div class="left-side">

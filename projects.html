@@ -8,6 +8,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
+</html>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
+
+span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: cornflowerblue;
+  font-size: 124px;
+  letter-spacing: 8px;
+  cursor: pointer;
+}
+
+span::before {
+  content: "PROJECTS";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    white 2px,
+    white 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+span::after {
+  content: "PROJECTS";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 2px,
+    white 2px,
+    white 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0px;
+  transition: 1s;
+}
+
+span:hover:before {
+  top: 10px;
+  left: 10px;
+}
+
+span:hover:after {
+  top: -10px;
+  left: -10px;
+} 
+</style>
 <body>
     <!--Create top ribbin-->
     <header id="top-ribbon" class="top-ribbon">
@@ -29,7 +90,7 @@
 
      <section id="about">
         <div class="about-container">
-            <h1>Projects</h1>
+            <h1><span>PROJECTS</span></h1>
         </div>
     </section>
 
@@ -67,7 +128,7 @@
         <div class="project">
             <div class="project-title">This Website (Source Code)</div>
             <a href="https://github.com/wcusato/portfolio" target="_blank">
-                <img src="images/guyCoding2.jpg" alt="Project 1">
+                <img src="images/css.png" alt="Project 1">
             </a>
         </div>
     </section>
