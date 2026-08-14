@@ -1,16 +1,36 @@
 /*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| GENERAL ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden; /* safety net against fixed offsets causing sideways scroll */
+}
+
 body {
     font-family: 'Exo 2', sans-serif;
-    padding-left: 25px;
-    padding-right: 25px;
+    margin: 0;
     padding: 0;
     line-height: 1.6;
     background: #333;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 section {
     padding: 2rem;
     margin: 2rem 0;
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 1rem;
+        margin: 1.5rem 0;
+    }
 }
 
 
@@ -20,7 +40,9 @@ section {
     position: relative;
     width: 100%;
     margin-top: 20vh;
-    height: 20vh;
+    min-height: 20vh;
+    height: auto;
+    padding: 1.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,40 +74,47 @@ section {
 
 .about-container h1 {
     font-family: 'Exo 2', sans-serif;
-    font-size: 6rem;
+    font-size: clamp(2.2rem, 9vw, 6rem);
     font-weight: bold;
     margin-bottom: 1rem;
 
 }
 
 .about-container p {
-    font-size: 1.6rem;
+    font-size: clamp(1rem, 2.2vw + 0.5rem, 1.6rem);
     font-weight: bold;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 0.5rem;
     line-height: 1.5;
 }
 
 
 /*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Contact INFORMATION ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 .contact {
-    margin: 100px;
+    margin: 6rem 4rem;
     color: white;
-    font-size: 1.6rem;
+    font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.6rem);
     font-family: 'Exo 2', sans-serif;
 }
 
 .contact-h1 {
     color: white;
-    font-size: 1.6rem;
+    font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.6rem);
     font-family: 'Exo 2', sans-serif;
 }
 
 #typing-text-contact {
-    font-size: 2.5rem;
+    font-size: clamp(1.3rem, 2vw + 1rem, 2.5rem);
     font-family: 'Exo 2', sans-serif;
     overflow: hidden;
     color: white;
+}
+
+@media (max-width: 600px) {
+    .contact {
+        margin: 3rem 1.25rem;
+    }
 }
 
 .text-container {
@@ -97,7 +126,7 @@ section {
 
 
 #typing-text-cornflower {
-    font-size: 2.5rem;
+    font-size: clamp(1.3rem, 2vw + 1rem, 2.5rem);
     font-family: 'Exo 2', sans-serif;
     overflow: hidden;
     color: cornflowerblue;
@@ -113,6 +142,16 @@ section {
 
 }
 
+/* This negative-margin overlap trick is tuned to one specific line height and
+   will drift on very small phones where the text above wraps differently.
+   If it still looks off on your phone, send over the HTML for this block and
+   I can replace it with a layout that doesn't depend on a magic offset. */
+@media (max-width: 420px) {
+    #typing-text-cornflower {
+        margin-top: -14rem;
+    }
+}
+
 
 /*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Top Ribbon ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 .top-ribbon {
@@ -126,7 +165,9 @@ section {
     z-index: 1000;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     transition: top 0.1s ease;
-    height: 60px;
+    min-height: 60px;
+    height: auto;
+    display: flex;
     align-items: center; 
     font-family: 'Exo 2', sans-serif;
 }
@@ -136,7 +177,6 @@ section {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
     box-sizing: border-box;
 }
 
@@ -193,6 +233,16 @@ section {
     
 }
 
+@media (max-width: 600px) {
+    .nav li {
+        margin: 3px 10px;
+    }
+
+    .nav a {
+        font-size: 0.9rem;
+    }
+}
+
 
 /*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Linked-in Logo ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 .social-logo {
@@ -222,8 +272,8 @@ i.fab:hover {
 .aboutMe {
     display: flex;
     flex-direction: column;
-    height: 100vh; 
-    width: 100vw; 
+    min-height: 100vh; 
+    width: 100%; 
     color: white;
     background: #333; 
     font-family: Arial, sans-serif;
@@ -238,8 +288,20 @@ i.fab:hover {
     font-size: 1.6rem;
 }
 
+@media (max-width: 600px) {
+    .left-side, .right-side {
+        padding: 20px;
+        max-width: 100%;
+        font-size: 1.2rem;
+    }
+
+    .contact-hero {
+        padding-top: 130px; /* clears the fixed nav, which can wrap to 2-3 lines this narrow */
+    }
+}
+
 .right-side::after, 
-.left-side::after
+.left-side::after,
 .contact::after { 
     content: ''; 
     display: block; 
@@ -256,25 +318,19 @@ i.fab:hover {
 }
 
 .text-line {
-    position: relative;
-    display: inline-block;
-    padding-top: 4px;
+    display: inline;
+    background-image: linear-gradient(cornflowerblue, cornflowerblue);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 0% 0.13em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-size 0.5s ease-in-out;
+    padding-bottom: 2px;
 }
 
-.text-line::after { 
-    content: ''; 
-    display: block; 
-    width: 0; 
-    height: .13em; 
-    background: cornflowerblue; 
-    transition: width 0.5s ease-in-out; 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-} 
-
-.text-line.animated::after { 
-    width: 100%; 
+.text-line.animated {
+    background-size: 100% 0.13em;
 }
 
 @media (min-width: 1150px) {
@@ -286,13 +342,18 @@ i.fab:hover {
         width: 90%; 
         height: 90%;
     }
+
+    .aboutMe .left-side,
+    .aboutMe .right-side {
+        padding: 40px 25px;
+    }
 }
 
 #typing-text {
-    font-size: 1.5rem;
+    font-size: clamp(1.05rem, 1vw + 0.85rem, 1.5rem);
     font-family: 'Exo 2', sans-serif;
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: normal;
+    overflow: visible;
     color: white;
 }
 
@@ -326,21 +387,29 @@ i.fab:hover {
 }
 
 .right-side h1 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 4vw + 1rem, 3rem);
     margin-bottom: 6px;
     text-decoration: underline;
 }
 
 .right-side p, .left-side p {
-    font-size: 1.6rem;
+    font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.6rem);
     line-height: 1.6;
 }
 
 .right-side a, .left-side a {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 1.5vw + 1rem, 1.8rem);
     line-height: 1.6;
     color: cornflowerblue;
     text-decoration-line: underline;
+}
+
+@media (max-width: 600px) {
+    .interest .left-side,
+    .interest .right-side {
+        padding: 20px;
+        margin-left: 0;
+    }
 }
 
 .left-side img {
@@ -368,6 +437,11 @@ i.fab:hover {
     .left-side img, .right-side img {
         width: 90%; 
         height: 100%;
+    }
+
+    .interest .left-side,
+    .interest .right-side {
+        padding: 40px 25px;
     }
 }
 
@@ -415,15 +489,20 @@ i.fab:hover {
 
 
 /*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Individual Project ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+.project-hero {
+    position: relative;
+}
+
 .projTitleText { 
     position: absolute; 
-    top: 35%; 
+    top: 1.5rem; 
     left: 50%; 
-    transform: translate(-50%, -100%); 
-    z-index: 2; 
+    width: 95%;
+    transform: translate(-50%, 50%);
+    z-index: 3; 
     color: white; 
     font-family: 'Roboto', monospace; 
-    font-size: 6rem; 
+    font-size: clamp(1.3rem, 6vw, 6rem); 
     font-weight: bold; 
     text-align: center; 
     white-space: nowrap; 
@@ -440,15 +519,13 @@ i.fab:hover {
 } 
 
 .indvProject:nth-of-type(2) {
-    top: 22rem;
-    margin-bottom: 25rem;
+    margin-bottom: 3rem;
 } 
-
 
 @media (min-width: 1250px) {
     .indvProject {
         flex-direction: row;
-        height: 50vh;
+        min-height: 50vh;
     }
 }
 
@@ -507,6 +584,13 @@ i.fab:hover {
     border-radius: 10px; 
 }
 
+.right-side-proj a, .left-side-proj a {
+    font-size: clamp(1.2rem, 1.5vw + 1rem, 1.8rem);
+    line-height: 1.6;
+    color: cornflowerblue;
+    text-decoration-line: underline;
+}
+
 @media (min-width: 768px) {
     .right-side-proj img {
         height: 50vh;
@@ -520,12 +604,48 @@ i.fab:hover {
     font-size: 1.6rem; 
     margin-left: 25px;
     margin-right: 25px;
-    padding: 2rem;
 }
 
-.fullText:nth-of-type(2) {
-    margin-top: 18rem;
-} 
+/* Extra clearance below the title for the first project it overlays.
+   Desktop: left and right sit side-by-side under the title, so both need it.
+   Mobile/tablet: they stack, so only whichever one lands on top needs it -
+   :first-child instead of hardcoding "left" so this still works correctly
+   on project pages where the image happens to be on the right instead. */
+@media (min-width: 1250px) {
+    .project-hero .left-side-proj ,
+    .project-hero .right-side-proj,
+    .project-hero .fullText {
+        padding-top: 16rem;
+    }
+}
+
+@media (max-width:1250px) {
+    .project-hero .indvProject > :first-child,
+    .project-hero .fullText {
+        padding-top: 15rem;
+    }
+}
+
+@media (max-width:1100px) {
+    .project-hero .indvProject > :first-child,
+    .project-hero .fullText {
+        padding-top: 14rem;
+    }
+}
+
+@media (max-width:900px) {
+    .project-hero .indvProject > :first-child,
+    .project-hero .fullText {
+        padding-top: 12rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .project-hero .indvProject > :first-child,
+    .project-hero .fullText {
+        padding-top: 10rem;
+    }
+}
 
 .projTitleText::after { 
     content: ''; 
@@ -559,11 +679,6 @@ i.fab:hover {
         margin-bottom: 20px;
     }
 
-    .projTitleText {
-        font-size: 2rem;
-        white-space: wrap; 
-    }
-
     .fullText {
         font-size: 1.6rem;
         padding: 10px;
@@ -593,21 +708,13 @@ span {
     color: cornflowerblue;
     letter-spacing: 8px;
     cursor: pointer;
-    font-size: 8rem;
+    font-size: clamp(2rem, 10vw, 8rem);
     white-space: nowrap;
+    text-align: center;
   }
 
-@media (max-width: 1200px) {
+@media (max-width: 480px) {
     span {
-        font-size: 6rem; /* Reduce font size */
-        white-space: normal;
-    }
-}
-
-
-@media (max-width: 800px) {
-    span {
-        font-size: 3rem; /* Reduce font size */
-        white-space: normal;
+        letter-spacing: 3px;
     }
 }
