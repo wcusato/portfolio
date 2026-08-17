@@ -1,10 +1,17 @@
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| GENERAL ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/* ============================================================================
+   RESPONSIVE TIER SYSTEM (mobile-first)
+   Base styles below = PHONE.
+   @media (min-width: 768px)  = TABLET / iPad
+   @media (min-width: 1024px) = LAPTOP / DESKTOP
+   ============================================================================ */
+
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| GENERAL |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 * {
     box-sizing: border-box;
 }
 
 html {
-    overflow-x: hidden; /* safety net against fixed offsets causing sideways scroll */
+    overflow-x: hidden; /* safety net against any offset causing sideways scroll */
 }
 
 body {
@@ -16,31 +23,38 @@ body {
     overflow-x: hidden;
 }
 
-img {
+img, video, iframe {
     max-width: 100%;
     height: auto;
 }
 
 section {
-    padding: 2rem;
-    margin: 2rem 0;
+    padding: 1rem;
+    margin: 1.5rem 0;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 768px) {
     section {
-        padding: 1rem;
-        margin: 1.5rem 0;
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    section {
+        padding: 2rem;
+        margin: 2rem 0;
     }
 }
 
 
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Title Page thing ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Title / Hero |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 
 #about {
     position: relative;
     width: 100%;
-    margin-top: 20vh;
-    min-height: 20vh;
+    margin-top: 12vh;
+    min-height: 18vh;
     height: auto;
     padding: 1.5rem 1rem;
     display: flex;
@@ -49,25 +63,38 @@ section {
     background: #333;
     color: white;
     text-align: center;
-    
+}
+
+@media (min-width: 768px) {
+    #about {
+        margin-top: 16vh;
+        min-height: 20vh;
+    }
+}
+
+@media (min-width: 1024px) {
+    #about {
+        margin-top: 20vh;
+        min-height: 20vh;
+    }
 }
 
 #about::before {
     content: "";
     position: absolute;
-    top: -10;
+    top: -10px;
     left: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 1; 
+    opacity: 1;
     z-index: 1;
 }
 
 .about-container {
     position: relative;
-    z-index: 2; 
+    z-index: 2;
     text-align: center;
     color: white;
 }
@@ -77,7 +104,6 @@ section {
     font-size: clamp(2.2rem, 9vw, 6rem);
     font-weight: bold;
     margin-bottom: 1rem;
-
 }
 
 .about-container p {
@@ -89,10 +115,37 @@ section {
     line-height: 1.5;
 }
 
+/* The big stylized name on the homepage hero */
+span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    color: cornflowerblue;
+    letter-spacing: 3px;
+    cursor: pointer;
+    font-size: clamp(2rem, 10vw, 8rem);
+    white-space: nowrap;
+    text-align: center;
+}
 
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Contact INFORMATION ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+@media (min-width: 768px) {
+    span {
+        letter-spacing: 5px;
+    }
+}
+
+@media (min-width: 1024px) {
+    span {
+        letter-spacing: 8px;
+    }
+}
+
+
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Contact Info |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 .contact {
-    margin: 6rem 4rem;
+    margin: 2rem 1.25rem;
     color: white;
     font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.6rem);
     font-family: 'Exo 2', sans-serif;
@@ -111,54 +164,70 @@ section {
     color: white;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 768px) {
     .contact {
-        margin: 3rem 1.25rem;
+        margin: 4rem 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact {
+        margin: 6rem 4rem;
+    }
+}
+
+/* This element used to sit right below the contact page nav */
+.contact-hero {
+    padding-top: 110px; /* clears the fixed nav, which can wrap to 2-3 lines on phone */
+}
+
+@media (min-width: 768px) {
+    .contact-hero {
+        padding-top: 90px;
     }
 }
 
 .text-container {
     max-width: 100%;
-    width: auto; 
-    word-wrap: break-word; 
+    width: auto;
+    word-wrap: break-word;
     white-space: pre-wrap;
 }
 
-
+/* Decorative underlined cornflower-blue text on the contact page.
+   NOTE: this negative margin is tuned to one specific line height and can
+   drift if the text above it wraps differently. If it ever looks off,
+   send the HTML for this block over and it can be replaced with a layout
+   that doesn't depend on a magic offset. */
 #typing-text-cornflower {
     font-size: clamp(1.3rem, 2vw + 1rem, 2.5rem);
     font-family: 'Exo 2', sans-serif;
-    overflow: hidden;
+    overflow: auto;
     color: cornflowerblue;
     text-decoration: underline;
-    margin-top: -30rem;
+    margin-top: -14rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     #typing-text-cornflower {
         margin-top: -18.35rem;
-        overflow: auto;
     }
-
 }
 
-/* This negative-margin overlap trick is tuned to one specific line height and
-   will drift on very small phones where the text above wraps differently.
-   If it still looks off on your phone, send over the HTML for this block and
-   I can replace it with a layout that doesn't depend on a magic offset. */
-@media (max-width: 420px) {
+@media (min-width: 1024px) {
     #typing-text-cornflower {
-        margin-top: -14rem;
+        margin-top: -30rem;
+        overflow: hidden;
     }
 }
 
 
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Top Ribbon ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Top Ribbon / Nav |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 .top-ribbon {
     width: 100%;
     background: #333;
     color: white;
-    padding: 5px 0px;
+    padding: 5px 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -168,7 +237,7 @@ section {
     min-height: 60px;
     height: auto;
     display: flex;
-    align-items: center; 
+    align-items: center;
     font-family: 'Exo 2', sans-serif;
 }
 
@@ -183,68 +252,48 @@ section {
 .nav {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 0;
     padding: 0;
+    width: 100%;
     transition: transform 0.3s ease;
 }
 
 .nav li {
-    margin: 0 100px;
+    margin: 3px 10px;
 }
 
 .nav a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
-.nav a:hover, .nav a:hover {
+.nav a:hover {
     color: cornflowerblue;
     transform: scale(1.1);
 }
 
-@media (max-width: 1400px) {
-    .nav-bar {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .nav {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
+@media (min-width: 768px) {
     .nav li {
-        margin: 1px;
-    }
-
-    .nav {
-        width: 100%;
-        justify-content: space-evenly;
-    }
-
-    .contact, .contact-h1 {
-        font-size: 1.6rem;
-    }
-
-    #typing-text-contact, #typing-text-cornflower {
-        font-size: 1.5rem;
-    }
-    
-}
-
-@media (max-width: 600px) {
-    .nav li {
-        margin: 3px 10px;
+        margin: 4px 20px;
     }
 
     .nav a {
-        font-size: 0.9rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav li {
+        margin: 0 60px;
     }
 }
 
 
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Linked-in Logo ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| LinkedIn / Social Icons |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 .social-logo {
     font-size: 30px;
     color: white;
@@ -257,125 +306,25 @@ section {
 }
 
 i.fab {
-    vertical-align: middle; 
-    font-size: 20px; 
-    margin-right: 10px; 
-    color: white; 
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 10px;
+    color: white;
 }
 
 i.fab:hover {
-    color: cornflowerblue; 
-    transform: scale(1.1); 
+    color: cornflowerblue;
+    transform: scale(1.1);
 }
 
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| About Me ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-.aboutMe {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-    width: 100%; 
-    color: white;
-    background: #333; 
-    font-family: Arial, sans-serif;
-}
 
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Shared Split Panels (About Me / Interests) |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+/* Shared base for the left/right split layout used on the About Me,
+   Interests, and Contact ("contact-hero") sections. Section-specific
+   tweaks (layout direction, max-width, alignment) are scoped below
+   under each section's own class so they can't leak into one another. */
 .left-side, .right-side {
     flex: 1;
-    padding: 50px;
-    display: block; 
-    max-width: 600px; 
-    text-align: left;
-    font-size: 1.6rem;
-}
-
-@media (max-width: 600px) {
-    .left-side, .right-side {
-        padding: 20px;
-        max-width: 100%;
-        font-size: 1.2rem;
-    }
-
-    .contact-hero {
-        padding-top: 130px; /* clears the fixed nav, which can wrap to 2-3 lines this narrow */
-    }
-}
-
-.right-side::after, 
-.left-side::after,
-.contact::after { 
-    content: ''; 
-    display: block; 
-    width: 0; 
-    height: 5px; 
-    background: cornflowerblue; 
-    transition: .5s ease-in-out; 
-} 
-
-.text-container {
-    width: 100%; 
-    word-wrap: break-word; 
-    white-space: pre-wrap; 
-}
-
-.text-line {
-    display: inline;
-    background-image: linear-gradient(cornflowerblue, cornflowerblue);
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-size: 0% 0.13em;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    transition: background-size 0.5s ease-in-out;
-    padding-bottom: 2px;
-}
-
-.text-line.animated {
-    background-size: 100% 0.13em;
-}
-
-@media (min-width: 1150px) {
-    .aboutMe {
-        flex-direction: row;
-    }
-
-    .left-side img, .right-side img {
-        width: 90%; 
-        height: 90%;
-    }
-
-    .aboutMe .left-side,
-    .aboutMe .right-side {
-        padding: 40px 25px;
-    }
-}
-
-#typing-text {
-    font-size: clamp(1.05rem, 1vw + 0.85rem, 1.5rem);
-    font-family: 'Exo 2', sans-serif;
-    white-space: normal;
-    overflow: visible;
-    color: white;
-}
-
-
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Interests ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-.interest {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    width: 100%;
-    color: white;
-    background: #333;
-    overflow: hidden;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.left-side, .right-side {
-    flex: 1; 
-    padding-right: 50px; 
-    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -383,7 +332,35 @@ i.fab:hover {
     text-align: left;
     font-family: 'Exo 2', sans-serif;
     color: white;
-    padding: 50px;
+    padding: 20px;
+    font-size: 1.1rem;
+}
+
+.left-side img, .right-side img {
+    object-fit: cover;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    .left-side, .right-side {
+        padding: 35px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .left-side, .right-side {
+        padding: 50px;
+        font-size: 1.6rem;
+    }
+
+    .left-side img, .right-side img {
+        width: 90%;
+        height: 90%;
+    }
 }
 
 .right-side h1 {
@@ -404,39 +381,96 @@ i.fab:hover {
     text-decoration-line: underline;
 }
 
-@media (max-width: 600px) {
-    .interest .left-side,
-    .interest .right-side {
-        padding: 20px;
-        margin-left: 0;
-    }
+.right-side::after,
+.left-side::after,
+.contact::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 5px;
+    background: cornflowerblue;
+    transition: .5s ease-in-out;
 }
 
-.left-side img {
-    object-fit: cover; 
-    z-index: 2;
-    width: 100%; 
-    height: auto;
-    border-radius: 10px;
+/* Scroll-triggered underline for individual lines of text (works even
+   when a line wraps, via box-decoration-break cloning the background
+   onto each visual fragment) */
+.text-line {
+    display: inline;
+    background-image: linear-gradient(cornflowerblue, cornflowerblue);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 0% 0.13em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-size 0.5s ease-in-out;
+    padding-bottom: 2px;
 }
 
-.right-side img {
-    object-fit: cover; 
-    margin-top: 3.5rem;
-    z-index: 2;
-    width: 100%; 
-    height: auto;
-    border-radius: 10px;
+.text-line.animated {
+    background-size: 100% 0.13em;
 }
 
-@media (min-width: 1150px) {
-    .interest {
+#typing-text {
+    font-size: clamp(1.05rem, 1vw + 0.85rem, 1.5rem);
+    font-family: 'Exo 2', sans-serif;
+    white-space: normal;
+    overflow: visible;
+    color: white;
+}
+
+
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| About Me |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+.aboutMe {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    color: white;
+    background: #333;
+    font-family: Arial, sans-serif;
+}
+
+.aboutMe .left-side,
+.aboutMe .right-side {
+    max-width: 700px;
+}
+
+@media (min-width: 1024px) {
+    .aboutMe {
         flex-direction: row;
     }
+}
 
-    .left-side img, .right-side img {
-        width: 90%; 
-        height: 100%;
+
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Interests |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+.interest {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers the left/right boxes when stacked on phone/tablet */
+    height: auto;
+    width: 100%;
+    color: white;
+    background: #333;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.interest .left-side img,
+.interest .right-side img {
+    margin-top: 0;
+}
+
+.interest .right-side img {
+    margin-top: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .interest {
+        flex-direction: row;
+        align-items: stretch;
     }
 
     .interest .left-side,
@@ -445,37 +479,48 @@ i.fab:hover {
     }
 }
 
-.slidingElement { 
-    position: relative; 
-    padding-right: 50px; 
+.slidingElement {
+    position: relative;
+    padding-right: 50px;
     z-index: 1;
     left: -100%;
-    color: white; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: left 1s ease-in-out;
 }
 
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Projects ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Projects (index/grid) |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 .projects-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 30px 0;
+    align-items: flex-start;
+    gap: 1.5rem;
 }
+
 .project {
-    width: 45%;
+    width: 100%;
     text-align: center;
-    color: white; 
+    color: white;
     padding-bottom: 20px;
 }
+
+@media (min-width: 768px) {
+    .project {
+        width: 45%;
+    }
+}
+
 .project-title {
     font-size: 2rem;
     margin-bottom: 10px;
     font-family: 'Exo 2', sans-serif;
     font-weight: bold;
 }
+
 .project img {
     width: 100%;
     height: auto;
@@ -483,238 +528,179 @@ i.fab:hover {
     border-radius: 8px;
     transition: transform 0.3s;
 }
+
 .project img:hover {
     transform: scale(1.05);
 }
 
 
-/*   ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Individual Project ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*   |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Individual Project Pages |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+/* .project-hero wraps the title + first project block together so the
+   title's position is anchored to that block specifically, not the
+   whole page. This must wrap the title and first .indvProject on every
+   project detail page for the positioning below to work correctly. */
 .project-hero {
     position: relative;
+    margin-top: 90px; /* clears the fixed nav, which can wrap to 2-3 lines on phone */
 }
 
-.projTitleText { 
-    position: absolute; 
-    top: 1.5rem; 
-    left: 50%; 
+@media (min-width: 768px) {
+    .project-hero {
+        margin-top: 80px;
+    }
+}
+
+.projTitleText {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
     width: 95%;
-    transform: translate(-50%, 50%);
-    z-index: 3; 
-    color: white; 
-    font-family: 'Roboto', monospace; 
-    font-size: clamp(1.3rem, 6vw, 6rem); 
-    font-weight: bold; 
-    text-align: center; 
-    white-space: nowrap; 
-} 
+    transform: translateX(-50%);
+    z-index: 3; /* must stay above the project images (z-index: 2) below */
+    color: white;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    font-size: clamp(1.3rem, 6vw, 6rem);
+    margin: 0;
+}
 
-.indvProject { 
-    position: relative; 
-    display: flex; 
+.projTitleText::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 10px;
+    background: cornflowerblue;
+    transition: .5s ease-in-out;
+}
+
+.projTitleText.animated::after {
+    width: 100%;
+}
+
+.indvProject {
+    position: relative;
+    display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    margin-bottom: 3rem; 
-    width: 100%;  
-} 
-
-.indvProject:nth-of-type(2) {
+    align-items: center;
+    justify-content: center;
     margin-bottom: 3rem;
-} 
+    width: 100%;
+}
 
-@media (min-width: 1250px) {
+@media (min-width: 1024px) {
     .indvProject {
         flex-direction: row;
         min-height: 50vh;
     }
 }
 
-.left-side-proj { 
-    flex: 1; 
-    padding-right: 25px; 
-    padding-left: 25px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: flex-start; 
-    text-align: left; 
-    font-family: 'Exo 2', sans-serif; 
-    color: white; 
-    padding: 50px; 
-    font-size: 1.6rem; 
-} 
-
-.left-side-proj img, 
-.left-side-proj iframe { 
-    object-fit: cover; 
-    z-index: 2; 
-    width: 100%; 
-    height: auto; 
-    border-radius: 10px; 
+.left-side-proj, .right-side-proj {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    font-family: 'Exo 2', sans-serif;
+    color: white;
+    padding: 20px;
+    font-size: 1.1rem;
 }
 
-@media (min-width: 768px) {
-    .left-side-proj img,
-    .left-side-proj iframe {
-        height: 50vh;
-        width: 40vw;
-    }
+.left-side-proj img, .left-side-proj iframe,
+.right-side-proj img, .right-side-proj iframe {
+    object-fit: cover;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
-.right-side-proj { 
-    flex: 1; 
-    padding-right: 25px; 
-    padding-left: 25px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: flex-start; 
-    text-align: left; 
-    font-family: 'Exo 2', sans-serif; 
-    color: white; 
-    padding: 50px; 
-    font-size: 1.6rem; 
-}
-
-.right-side-proj img { 
-    object-fit: cover; 
-    z-index: 2; 
-    width: 100%; 
-    height: auto; 
-    border-radius: 10px; 
-}
-
-.right-side-proj a, .left-side-proj a {
-    font-size: clamp(1.2rem, 1.5vw + 1rem, 1.8rem);
+.left-side-proj a, .right-side-proj a {
+    font-size: clamp(1.1rem, 1.5vw + 1rem, 1.8rem);
     line-height: 1.6;
     color: cornflowerblue;
     text-decoration-line: underline;
 }
 
 @media (min-width: 768px) {
-    .right-side-proj img {
+    .left-side-proj, .right-side-proj {
+        padding: 35px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .left-side-proj, .right-side-proj {
+        padding: 50px;
+        font-size: 1.6rem;
+    }
+
+    .left-side-proj img, .left-side-proj iframe,
+    .right-side-proj img, .right-side-proj iframe {
         height: 50vh;
         width: 40vw;
     }
 }
 
-.fullText { 
-    font-family: 'Exo 2', sans-serif; 
-    color: white; 
-    font-size: 1.6rem; 
-    margin-left: 25px;
-    margin-right: 25px;
-}
-
-/* Extra clearance below the title for the first project it overlays.
-   Desktop: left and right sit side-by-side under the title, so both need it.
-   Mobile/tablet: they stack, so only whichever one lands on top needs it -
-   :first-child instead of hardcoding "left" so this still works correctly
-   on project pages where the image happens to be on the right instead. */
-@media (min-width: 1250px) {
-    .project-hero .left-side-proj ,
-    .project-hero .right-side-proj,
-    .project-hero .fullText {
-        padding-top: 16rem;
-    }
-}
-
-@media (max-width:1250px) {
-    .project-hero .indvProject > :first-child,
-    .project-hero .fullText {
-        padding-top: 15rem;
-    }
-}
-
-@media (max-width:1100px) {
-    .project-hero .indvProject > :first-child,
-    .project-hero .fullText {
-        padding-top: 14rem;
-    }
-}
-
-@media (max-width:900px) {
-    .project-hero .indvProject > :first-child,
-    .project-hero .fullText {
-        padding-top: 12rem;
-    }
-}
-
-@media (max-width: 650px) {
-    .project-hero .indvProject > :first-child,
-    .project-hero .fullText {
-        padding-top: 10rem;
-    }
-}
-
-.projTitleText::after { 
-    content: ''; 
-    display: block; 
-    width: 0; 
-    height: 10px; 
-    background: cornflowerblue; 
-    transition: .5s ease-in-out; 
-} 
-.projTitleText.animated::after { 
-    width: 100%; 
+.fullText {
+    font-family: 'Exo 2', sans-serif;
+    color: white;
+    font-size: 1.1rem;
+    margin: 0 15px;
 }
 
 .fullText a {
     color: cornflowerblue;
 }
 
-
-/* Responsive Enhancements */
-@media (max-width: 1024px) {
-    .projects-section {
-        flex-direction: column;
-    }
-
-    span {
-        white-space: wrap;
-    }
-
-    .project {
-        width: 90%;
-        margin-bottom: 20px;
-    }
-
+@media (min-width: 768px) {
     .fullText {
-        font-size: 1.6rem;
-        padding: 10px;
+        font-size: 1.3rem;
+        margin: 0 20px;
+        padding: 1rem;
     }
-
-    #typing-text {
-        font-size: 1.1rem;
-        overflow: auto;
-    }
-
-    .right-side h1{
-        font-size: 2.5rem;
-    }
-
-    .about-container p{
-        font-size: 1.1rem;
-    }
-
 }
 
-span {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    color: cornflowerblue;
-    letter-spacing: 8px;
-    cursor: pointer;
-    font-size: clamp(2rem, 10vw, 8rem);
-    white-space: nowrap;
-    text-align: center;
-  }
+@media (min-width: 1024px) {
+    .fullText {
+        font-size: 1.6rem;
+        padding: 2rem;
+    }
+}
 
-@media (max-width: 480px) {
-    span {
-        letter-spacing: 3px;
+/* Clearance below the title for the first project it overlays.
+   Phone/tablet: the project stacks in a column, so only whichever child
+   lands first (on top) needs the room - :first-child instead of hardcoding
+   "left" so this still works on pages where the image is on the right.
+   Desktop: left and right sit side-by-side under the title, so both need it. */
+.project-hero .indvProject > :first-child {
+    padding-top: 8rem;
+}
+
+.project-hero .fullText {
+    padding-top: 8rem;
+}
+
+@media (min-width: 768px) {
+    .project-hero .indvProject > :first-child {
+        padding-top: 10rem;
+    }
+
+    .project-hero .fullText {
+        padding-top: 10rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-hero .indvProject > .left-side-proj,
+    .project-hero .indvProject > .right-side-proj {
+        padding-top: 14rem;
+    }
+
+    .project-hero .fullText {
+        padding-top: 14rem;
     }
 }
